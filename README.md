@@ -1,14 +1,26 @@
+> ## ⚠️ DISCLAIMER — READ FIRST
+>
+> This project is **for educational and research purposes only**. It exists to demonstrate why financial APIs should never be exposed directly to end users and how insecure such practices can be.
+>
+> **Using this software in any real or production capacity:**
+> - Violates **Zerodha's Terms of Service**
+> - May violate **securities regulations** in your jurisdiction (SEBI, SEC, FCA, etc.)
+> - May violate **computer fraud and abuse laws** in your region
+> - Could result in **permanent account suspension**, **legal liability**, or **criminal charges**
+>
+> The author assumes **zero liability** for how this code is used. Do not use it on live accounts. Do not use it to trade real money. If you choose to ignore this warning, you alone bear all legal and financial consequences.
+>
+> ---
+
 # ZeroApiWrapper
 
 **Unofficial Zerodha Kite API — no subscription required.**
 
-ZeroApiWrapper is a lightweight Python client for the Zerodha Kite platform that authenticates directly through the web login flow instead of the official Kite Connect API. No paid API subscription, no API key, no API secret — just your Zerodha credentials and a TOTP seed.
+ZeroApiWrapper demonstrates authenticating to the Zerodha Kite platform through the web login flow instead of the official Kite Connect API. No paid API subscription, no API key, no API secret.
 
 ## How it works
 
-The standard Kite Connect API requires a paid subscription and OAuth token generation. This library bypasses all of that by replicating the web login flow — credentials + TOTP — to obtain an `enctoken`, which is then used to sign all subsequent requests. Think of it as scripting Kite web from Python.
-
-> **⚠️ Not affiliated with Zerodha. Use at your own risk — this goes against Zerodha's ToS.**
+The standard Kite Connect API requires a paid subscription and OAuth token generation. This library bypasses all of that by replicating the web login flow — credentials + TOTP — to obtain an `enctoken`, which is then used to sign all subsequent requests.
 
 ## Features
 
@@ -125,8 +137,9 @@ The class exposes all Kite enum values as class attributes:
 - **Exchanges**: `EXCHANGE_NSE`, `EXCHANGE_BSE`, `EXCHANGE_NFO`, `EXCHANGE_CDS`, `EXCHANGE_BFO`, `EXCHANGE_MCX`
 - **GTT types**: `GTT_TYPE_OCO`, `GTT_TYPE_SINGLE`
 
-## Important notes
+## Notes
 
 - The session token (`enctoken`) is short-lived and auto-renews via `isAuthenticated()`.
 - The `.env` file keeps your credentials out of source control.
-- This is **not** the official Kite Connect API. Expect no guarantees on uptime or compatibility.
+- This is **not** the official Kite Connect API.
+- See the [disclaimer](#-disclaimer--read-first) at the top of this file.
